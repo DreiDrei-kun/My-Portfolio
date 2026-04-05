@@ -633,6 +633,134 @@
       transform: translateY(0);
     }
 
+    .slideshow {
+      position: relative;
+      width: 100%;
+      height: 240px;
+      border-radius: 18px;
+      overflow: hidden;
+      margin-bottom: 1rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--line);
+    }
+    
+    .slide {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 300ms ease;
+    }
+    
+    .slide.active {
+      opacity: 1;
+    }
+    
+    .slide-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(11, 16, 32, 0.65);
+      color: white;
+      border-radius: 999px;
+      cursor: pointer;
+      z-index: 2;
+      font-size: 1.1rem;
+      transition: background 180ms ease, transform 180ms ease;
+    }
+    
+    .slide-btn:hover {
+      background: rgba(124, 92, 255, 0.85);
+    }
+    
+    .slide-btn.prev {
+      left: 12px;
+    }
+    
+    .slide-btn.next {
+      right: 12px;
+    }
+    
+    .slide-dots {
+      position: absolute;
+      left: 50%;
+      bottom: 12px;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 0.45rem;
+      z-index: 2;
+    }
+    
+    .slide-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      border: none;
+      background: rgba(255, 255, 255, 0.45);
+      cursor: pointer;
+      transition: transform 180ms ease, background 180ms ease;
+    }
+    
+    .slide-dot.active {
+      background: white;
+      transform: scale(1.15);
+    }
+    
+    .certificate-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    
+    .certificate-card {
+      overflow: hidden;
+      padding: 0;
+    }
+    
+    .certificate-preview {
+      height: 320px;
+      background: #0f172a;
+      border-bottom: 1px solid var(--line);
+    }
+    
+    .certificate-preview iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    
+    .certificate-content {
+      padding: 1.25rem;
+    }
+    
+    .certificate-actions {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+    
+    @media (max-width: 1100px) {
+      .certificate-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    @media (max-width: 640px) {
+      .slideshow {
+        height: 210px;
+      }
+    
+      .certificate-preview {
+        height: 260px;
+      }
+    }
+
     /* RESPONSIVE */
     @media (max-width: 1100px) {
       .hero-grid,
@@ -744,6 +872,7 @@
         <a href="#about">About</a>
         <a href="#skills">Skills</a>
         <a href="#projects">Projects</a>
+        <a href="#certificates">Certificates</a>
         <a href="#education">Education</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -939,46 +1068,84 @@
       <div class="container">
         <h2 class="section-title reveal">Selected Projects</h2>
         <p class="section-subtitle reveal">
-          Academic projects that reflect my ability to work across business systems,
-          game development, and web applications.
+          A visual showcase of my academic and technical projects.
         </p>
-
+    
         <div class="projects-grid">
           <article class="project reveal">
             <span class="project-type">Business Application Development</span>
             <h3>Service Invoice and Inventory Alignment System</h3>
+    
+            <div class="slideshow" data-slideshow>
+              <img src="projects/invoice-1.jpg" class="slide active" alt="Invoice system screenshot 1">
+              <img src="projects/invoice-2.jpg" class="slide" alt="Invoice system screenshot 2">
+              <img src="projects/invoice-3.jpg" class="slide" alt="Invoice system screenshot 3">
+    
+              <button class="slide-btn prev" type="button">&#10094;</button>
+              <button class="slide-btn next" type="button">&#10095;</button>
+    
+              <div class="slide-dots"></div>
+            </div>
+    
             <p>
               Built a system concept for DJ Car Auto Shop to align service invoices with
               inventory records and support smoother business operations.
             </p>
+    
             <ul>
               <li>Analyzed workflow and service transaction processes.</li>
               <li>Mapped inventory updates to operational activity.</li>
               <li>Created documentation and process diagrams for system design.</li>
             </ul>
           </article>
-
+    
           <article class="project reveal">
             <span class="project-type">Game Development</span>
             <h3>Bullet-Hell Top-Down Dungeon Crawler</h3>
+    
+            <div class="slideshow" data-slideshow>
+              <img src="projects/dungeon-1.jpg" class="slide active" alt="Dungeon crawler screenshot 1">
+              <img src="projects/dungeon-2.jpg" class="slide" alt="Dungeon crawler screenshot 2">
+              <img src="projects/dungeon-3.jpg" class="slide" alt="Dungeon crawler screenshot 3">
+    
+              <button class="slide-btn prev" type="button">&#10094;</button>
+              <button class="slide-btn next" type="button">&#10095;</button>
+    
+              <div class="slide-dots"></div>
+            </div>
+    
             <p>
               Collaborated with a team to develop a bullet-hell style dungeon crawler
               for PC and console using C++ and Raylib.
             </p>
+    
             <ul>
               <li>Implemented gameplay mechanics and core systems.</li>
               <li>Coordinated development tasks within the team.</li>
               <li>Contributed to design and functionality decisions.</li>
             </ul>
           </article>
-
+    
           <article class="project reveal">
             <span class="project-type">Software Development</span>
             <h3>Payroll Management Web System (Lazapee)</h3>
+    
+            <div class="slideshow" data-slideshow>
+              <img src="projects/payroll-1.jpg" class="slide active" alt="Payroll system screenshot 1">
+              <img src="projects/payroll-2.jpg" class="slide" alt="Payroll system screenshot 2">
+              <img src="projects/payroll-3.jpg" class="slide" alt="Payroll system screenshot 3">
+    
+              <button class="slide-btn prev" type="button">&#10094;</button>
+              <button class="slide-btn next" type="button">&#10095;</button>
+    
+              <div class="slide-dots"></div>
+            </div>
+    
             <p>
               Developed a web-based payroll system for employee management and payslip
               generation using Python and Django.
             </p>
+    
             <ul>
               <li>Built employee, overtime, and payroll features.</li>
               <li>Generated payslip summaries based on payroll rules.</li>
@@ -989,6 +1156,86 @@
       </div>
     </section>
 
+    <section class="section" id="certificates">
+      <div class="container">
+        <h2 class="section-title reveal">Certificates</h2>
+        <p class="section-subtitle reveal">
+          Certifications, training, and achievements that strengthen my technical and creative profile.
+        </p>
+    
+        <div class="certificate-grid">
+          <article class="certificate-card glass reveal">
+            <div class="certificate-preview">
+              <iframe
+                src="certificates/certificate-1.pdf#toolbar=0&navpanes=0&scrollbar=0"
+                title="Certificate 1 Preview"
+                loading="lazy">
+              </iframe>
+            </div>
+    
+            <div class="certificate-content">
+              <span class="project-type">Certificate</span>
+              <h3>Certificate Title 1</h3>
+              <p class="muted">
+                Add a short description about the course, organization, and skills learned.
+              </p>
+    
+              <div class="certificate-actions">
+                <a class="btn btn-secondary" href="certificates/certificate-1.pdf" target="_blank">View PDF</a>
+                <a class="btn btn-secondary" href="certificates/certificate-1.pdf" download>Download</a>
+              </div>
+            </div>
+          </article>
+    
+          <article class="certificate-card glass reveal">
+            <div class="certificate-preview">
+              <iframe
+                src="certificates/certificate-2.pdf#toolbar=0&navpanes=0&scrollbar=0"
+                title="Certificate 2 Preview"
+                loading="lazy">
+              </iframe>
+            </div>
+    
+            <div class="certificate-content">
+              <span class="project-type">Certificate</span>
+              <h3>Certificate Title 2</h3>
+              <p class="muted">
+                Add a short description about the issuing organization and relevance to your goals.
+              </p>
+    
+              <div class="certificate-actions">
+                <a class="btn btn-secondary" href="certificates/certificate-2.pdf" target="_blank">View PDF</a>
+                <a class="btn btn-secondary" href="certificates/certificate-2.pdf" download>Download</a>
+              </div>
+            </div>
+          </article>
+    
+          <article class="certificate-card glass reveal">
+            <div class="certificate-preview">
+              <iframe
+                src="certificates/certificate-3.pdf#toolbar=0&navpanes=0&scrollbar=0"
+                title="Certificate 3 Preview"
+                loading="lazy">
+              </iframe>
+            </div>
+    
+            <div class="certificate-content">
+              <span class="project-type">Certificate</span>
+              <h3>Certificate Title 3</h3>
+              <p class="muted">
+                Add a short description here to explain what this certificate demonstrates.
+              </p>
+    
+              <div class="certificate-actions">
+                <a class="btn btn-secondary" href="certificates/certificate-3.pdf" target="_blank">View PDF</a>
+                <a class="btn btn-secondary" href="certificates/certificate-3.pdf" download>Download</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+    
     <section class="section" id="education">
       <div class="container">
         <h2 class="section-title reveal">Education</h2>
@@ -1091,38 +1338,38 @@
     const navAnchors = [...document.querySelectorAll(".nav-links a")];
     const sections = [...document.querySelectorAll("main section[id]")];
     const reveals = [...document.querySelectorAll(".reveal")];
-
+  
     menuBtn.addEventListener("click", () => {
       navLinks.classList.toggle("open");
     });
-
+  
     navAnchors.forEach((anchor) => {
       anchor.addEventListener("click", () => {
         navLinks.classList.remove("open");
       });
     });
-
+  
     const activateNavLink = () => {
       const scrollY = window.scrollY + 140;
-
+  
       sections.forEach((section) => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.offsetHeight;
         const id = section.getAttribute("id");
         const targetLink = document.querySelector(`.nav-links a[href="#${id}"]`);
-
+  
         if (!targetLink) return;
-
+  
         if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
           navAnchors.forEach((link) => link.classList.remove("active"));
           targetLink.classList.add("active");
         }
       });
     };
-
+  
     const revealOnScroll = () => {
       const trigger = window.innerHeight * 0.9;
-
+  
       reveals.forEach((el) => {
         const top = el.getBoundingClientRect().top;
         if (top < trigger) {
@@ -1130,15 +1377,71 @@
         }
       });
     };
-
+  
+    function initSlideshows() {
+      const slideshows = document.querySelectorAll("[data-slideshow]");
+  
+      slideshows.forEach((slideshow) => {
+        const slides = slideshow.querySelectorAll(".slide");
+        const prevBtn = slideshow.querySelector(".prev");
+        const nextBtn = slideshow.querySelector(".next");
+        const dotsContainer = slideshow.querySelector(".slide-dots");
+  
+        let currentIndex = 0;
+  
+        if (!slides.length) return;
+  
+        function renderDots() {
+          dotsContainer.innerHTML = "";
+          slides.forEach((_, index) => {
+            const dot = document.createElement("button");
+            dot.className = "slide-dot";
+            dot.type = "button";
+            dot.setAttribute("aria-label", `Go to slide ${index + 1}`);
+            if (index === currentIndex) dot.classList.add("active");
+            dot.addEventListener("click", () => {
+              currentIndex = index;
+              updateSlides();
+            });
+            dotsContainer.appendChild(dot);
+          });
+        }
+  
+        function updateSlides() {
+          slides.forEach((slide, index) => {
+            slide.classList.toggle("active", index === currentIndex);
+          });
+  
+          const dots = dotsContainer.querySelectorAll(".slide-dot");
+          dots.forEach((dot, index) => {
+            dot.classList.toggle("active", index === currentIndex);
+          });
+        }
+  
+        prevBtn.addEventListener("click", () => {
+          currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+          updateSlides();
+        });
+  
+        nextBtn.addEventListener("click", () => {
+          currentIndex = (currentIndex + 1) % slides.length;
+          updateSlides();
+        });
+  
+        renderDots();
+        updateSlides();
+      });
+    }
+  
     window.addEventListener("scroll", () => {
       activateNavLink();
       revealOnScroll();
     });
-
+  
     window.addEventListener("load", () => {
       activateNavLink();
       revealOnScroll();
+      initSlideshows();
     });
   </script>
 </body>
